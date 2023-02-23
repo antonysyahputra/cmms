@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use \App\Models\Asset;
-use \App\Models\Inventory;
 use \App\Models\Product;
+use \App\Models\Inventory;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InventoryController;
 
 /*
@@ -24,36 +25,28 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('/posts/{id}', function ($id) {
-    ddd($id);
-    return response('Post '. $id);
-});
-
-Route::get('/equipments', function () {
-    return view('/equipments/index', [
-        "title" => "Equipment Page"
-    ]);
-});
-
-Route::get('/assets', function () {
-    return view('/assets/index', [
-        'title' => 'Data Assets',
-        'assets' => Asset::all(),
-    ]);
-})->name('assets');
-
-Route::get('/assets/{id}', function ($id) {
-    return Asset::find($id);
-});
-
+// Inventory
 Route::get('/inventories', [InventoryController::class, 'index'])->name('inventories');
-
 Route::get('/inventories/{id}', function ($id) {
     return Inventory::find($id);
 });
 
+// Product
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/create', [ProductController::class, 'create']);
+
+// Category
+
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+Route::get('/categories/create', [CategoryController::class, 'create']);
+Route::post('/categories', [CategoryController::class, 'store']);
+
+
+
+
+
+
+
 
 Route::get('/sidebar', function () {
     return view('sidebartest');

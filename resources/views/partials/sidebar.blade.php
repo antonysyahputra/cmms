@@ -46,7 +46,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('categories') }}">
           <span class="menu-title">Category</span>
           <i class="mdi mdi-chart-bar menu-icon"></i>
         </a>

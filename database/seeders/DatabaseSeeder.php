@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(5)->create();
+        \App\Models\User::factory(5)->create();
         Product::create([
             'code_product' => "AC01",
             'name' => 'AC Panasonic 1PK',
