@@ -18,8 +18,17 @@
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Products</h4>
+              <div class="search-field d-none d-md-block">
+                <form class="d-flex align-items-center h-100" action="#">
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <i class="input-group-text border-0 mdi mdi-magnify"></i>
+                    </div>
+                    <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
+                  </div>
+                </form>
+              </div>
               <div class="d-flex justify-content-end">
-                {{-- <button type="button" class="btn btn-gradient-primary mb-3 btn-fw ">ADD</button> --}}
                 <a href="{{ route('products') }}/create" class="btn btn-gradient-primary mb-3 btn-fw">Tambah</a>
               </div>
               
@@ -56,7 +65,6 @@
             </table>
             <div class="d-flex justify-content-end mt-3 ">
                 {{ $products->links() }}
-                {{-- @dd($products) --}}
             </div>
             </div>
           </div>

@@ -36,16 +36,16 @@
                 <tbody>
                     @foreach ($categories as $key => $category)
                     <tr>
-                        <td>1</td>
+                        <td>{{ $categories->firstItem() + $key }}</td>
                         <td> {{ $category->name }} </td>
                         <td> {{ $category->code }} </td>
                       </tr> 
                     @endforeach
                 </tbody>
             </table>
-            {{-- <div class="d-flex justify-content-end mt-3 ">
-                {{ $products->links() }}
-            </div> --}}
+            <div class="d-flex justify-content-end mt-3 ">
+              {{ $categories->links() }}
+          </div>
             </div>
           </div>
         </div>  
