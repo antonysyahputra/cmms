@@ -18,21 +18,51 @@
             <div class="card">
               <div class="card-body">
                   <h4 class="card-title">{{ $title }} Form</h4>
-                  <form class="forms-sample" action="{{ route('categories') }}" method="POST">
+                  <form class="forms-sample" action="{{ route('inventories') }}" method="POST">
                       @csrf
                     <div class="form-group">
-                      <label for="name">Name</label>
-                      <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name">
-                      @error('name')
+                      <label for="product_id">Product</label>
+                      {{-- <input type="text" class="form-control @error('name') is-invalid @enderror" name="product_id" id="product_id" placeholder="product_id"> --}}
+                      <select name="product_id" id="product_id" class="form-control">
+                        <option value=""></option>
+                        @foreach ($products as $product)
+                            <option class="product" value="{{ $product->id }}">{{ $product->code . ' = ' . $product->name }}</option>
+                        @endforeach
+                      </select>
+                      @error('product_id')
                       <div id="" class="invalid-feedback">
                         {{ $message }}
                       </div>
                       @enderror
                     </div>
                     <div class="form-group">
-                      <label for="code">Code</label>
-                      <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="Code">
-                      @error('code')
+                      <label for="room_id">Room</label>
+                      {{-- <input type="text" class="form-control @error('name') is-invalid @enderror" name="room_id" id="room_id" placeholder="room_id"> --}}
+                      <select name="room_id" id="room_id" class="form-control">
+                        <option value=""></option>
+                        @foreach ($rooms as $room)
+                            <option value="{{ $room->id }}">{{ $room->name }}</option>
+                        @endforeach
+                      </select>
+                      @error('room_id')
+                      <div id="" class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                      <label for="purchased_in">Purchased In</label>
+                      <input type="date" class="form-control @error('name') is-invalid @enderror" name="purchased_in" id="purchased_in" placeholder="purchased_in">
+                      @error('purchased_in')
+                      <div id="" class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                      <label for="code_inventory">Code inventory</label>
+                      <input type="text" class="form-control @error('code_inventory') is-invalid @enderror" name="code_inventory" id="code_inventory" placeholder="Code_inventory">
+                      @error('code_inventory')
                       <div id="" class="invalid-feedback">
                         {{ $message }}
                       </div>

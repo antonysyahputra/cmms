@@ -15,7 +15,13 @@ class Room extends Model
         'floor',
     ];
 
-    public function inventory() {
+    public function inventory() 
+    {
         return $this->hasMany(Inventory::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
     }
 }

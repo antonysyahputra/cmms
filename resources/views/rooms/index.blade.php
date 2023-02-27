@@ -29,6 +29,7 @@
                   <tr>
                     <th> # </th>
                     <th>Name</th>
+                    <th>Department</th>
                     <th>Floor</th>
                     
                   </tr>
@@ -38,6 +39,7 @@
                     <tr>
                         <td>{{ $rooms->firstItem() + $key }}</td>
                         <td> {{ $room->name }} </td>
+                        <td> {{ $room->department->name }} </td>
                         <td> {{ $room->floor }} </td>
                       </tr> 
                     @endforeach

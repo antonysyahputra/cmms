@@ -27,7 +27,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Title</th>
+                        <th>Code</th>
                         <th>product</th>
                         <th>Purchased In</th>
                         <th>Room</th>
@@ -36,8 +36,8 @@
                 @php
                 $i = 1;
             @endphp
-            
-            @unless (count($inventories) || count($products) == 0)
+            {{-- @dd($inventories) --}}
+            @unless (count($inventories) == 0)
             @foreach ($inventories as $inventory)
                 <tr>
                     <td class="table-item">{{ $i++ }}</td>
