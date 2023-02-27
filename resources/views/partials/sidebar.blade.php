@@ -52,8 +52,8 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{  asset('bootstrap-5') }}/pages/tables/basic-table.html">
-          <span class="menu-title">Tables</span>
+        <a class="nav-link" href="{{  route('rooms') }}">
+          <span class="menu-title">Room</span>
           <i class="mdi mdi-table-large menu-icon"></i>
         </a>
       </li>

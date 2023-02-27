@@ -11,7 +11,8 @@ class Room extends Model
 
     protected $fillable = [
         'name',
-        'unit_id',   
+        'department_id',
+        'floor',
     ];
 
     public function inventory() {

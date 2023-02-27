@@ -19,7 +19,8 @@
             <div class="card-body">
               <h4 class="card-title">Products</h4>
               <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-gradient-primary mb-3 btn-fw ">ADD</button>
+                {{-- <button type="button" class="btn btn-gradient-primary mb-3 btn-fw ">ADD</button> --}}
+                <a href="{{ route('inventories') }}/create" class="btn btn-gradient-primary mb-3 btn-fw">Tambah</a>
               </div>
               
               <table class="table table-bordered">
@@ -36,7 +37,7 @@
                 $i = 1;
             @endphp
             
-            @unless (count($inventories) == 0)
+            @unless (count($inventories) || count($products) == 0)
             @foreach ($inventories as $inventory)
                 <tr>
                     <td class="table-item">{{ $i++ }}</td>
@@ -47,7 +48,7 @@
                 </tr>
                 @endforeach
             @else
-            <p>no inventories found</p>
+            <h3>no inventories found</h3>
             @endunless
             </table>
             <div class="d-flex justify-content-end mt-3 ">
