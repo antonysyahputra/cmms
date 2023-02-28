@@ -11,10 +11,17 @@ class Room extends Model
 
     protected $fillable = [
         'name',
-        'unit_id',   
+        'department_id',
+        'floor',
     ];
 
-    public function inventory() {
+    public function inventory() 
+    {
         return $this->hasMany(Inventory::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
     }
 }

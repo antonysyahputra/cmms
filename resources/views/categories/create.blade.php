@@ -42,9 +42,7 @@
                   </form>
                 </div>
               </div>
-            </div>
-          
-        
+            </div>    
     </div>
     <!-- content-wrapper ends -->
     <!-- partial:{{  asset('bootstrap-5') }}/partials/_footer.html -->

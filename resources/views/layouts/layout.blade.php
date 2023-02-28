@@ -44,6 +44,14 @@
     <script src="{{  asset('bootstrap-5') }}/assets/js/misc.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+    <script>
+      let product = $('#code_inventory').on('click', function() {
+        console.log($('#product_id option:selected').text())
+      });
+      // console.log(product)
+
+    </script>
     <!-- End custom js for this page -->
   </body>
 </html>

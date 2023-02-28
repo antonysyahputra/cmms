@@ -26,7 +26,23 @@ class ProductController extends Controller
     public function create()
     {
         return view('products/create', [
-            'title' => 'Form Product'
+            'title' => 'Form Product',
+            'categories' => Category::all(),
         ]);
+    }
+
+    public function store(Request $request) 
+    {
+        $formProducts = $request->validate([
+            'code' => 'required|unique:products',
+            'name' => 'required',
+            'brand' => 'required',
+            'specification' => 'required',
+            'category_id' => 'required',
+        ]);
+// dd($formProducts);
+        Product::create($formProducts);
+
+        return redirect('/products');
     }
 }

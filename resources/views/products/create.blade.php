@@ -14,34 +14,65 @@
         </nav>
       </div>
       <div class="row">     
-        <div class="col-lg-12 grid-margin stretch-card">
+        <div class="col-lg-6 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
                 <h4 class="card-title">{{ $title }}</h4>
-                <form class="forms-sample">
-                  <div class="form-group">
-                    <label for="exampleInputUsername1">Username</label>
-                    <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username">
+                <form class="forms-sample" action="{{ route('products') }}" method="POST">
+                  @csrf
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name">
+                  @error('name')
+                  <div id="" class="invalid-feedback">
+                    {{ $message }}
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                  @enderror
+                </div>
+                <div class="form-group"> 
+                  <label for="code">Code</label>
+                  <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="Code">
+                  @error('code')
+                  <div id="" class="invalid-feedback">
+                    {{ $message }}
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  @enderror
+                </div>
+                <div class="form-group"> 
+                  <label for="brand">Brand</label>
+                  <input type="text" class="form-control @error('brand') is-invalid @enderror" name="brand" id="brand" placeholder="brand">
+                  @error('brand')
+                  <div id="" class="invalid-feedback">
+                    {{ $message }}
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputConfirmPassword1">Confirm Password</label>
-                    <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password">
+                  @enderror
+                </div>
+                <div class="form-group"> 
+                  <label for="specification">Specification</label>
+                  <input type="text" class="form-control @error('specification') is-invalid @enderror" name="specification" id="specification" placeholder="specification">
+                  @error('specification')
+                  <div id="" class="invalid-feedback">
+                    {{ $message }}
                   </div>
-                  <div class="form-check form-check-flat form-check-primary">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input"> Remember me </label>
+                  @enderror
+                </div>
+                <div class="form-group"> 
+                  <label for="category_id">Category</label>
+                  {{-- <input type="text" class="form-control @error('category_id') is-invalid @enderror" name="category_id" id="category_id" placeholder="category"> --}}
+                  <select class="form-control" name="category_id" id="category_id">
+                    <option value="#"></option>
+                    @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->code }} - {{ $category->name }}</option>
+                    @endforeach
+                  </select>
+                  @error('category_id')
+                  <div id="" class="invalid-feedback">
+                    {{ $message }}
                   </div>
-                  <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-                  <button class="btn btn-light">Cancel</button>
-                </form>
+                  @enderror
+                </div>
+                <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+              </form>
                 
               </div>
             </div>

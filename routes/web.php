@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\RoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ Route::get('/', function () {
 
 // Inventory
 Route::get('/inventories', [InventoryController::class, 'index'])->name('inventories');
+Route::get('/inventories/create', [InventoryController::class, 'create']);
+Route::post('/inventories', [InventoryController::class, 'store']);
 Route::get('/inventories/{id}', function ($id) {
     return Inventory::find($id);
 });
@@ -34,12 +37,19 @@ Route::get('/inventories/{id}', function ($id) {
 // Product
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/create', [ProductController::class, 'create']);
+Route::post('/products', [ProductController::class, 'store']);
 
 // Category
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 Route::get('/categories/create', [CategoryController::class, 'create']);
 Route::post('/categories', [CategoryController::class, 'store']);
+
+// Room
+Route::get('/rooms', [RoomController::class, 'index'])->name('rooms');
+Route::get('/rooms/create', [RoomController::class, 'create']);
+Route::post('/rooms', [RoomController::class, 'store']);
+
 
 
 

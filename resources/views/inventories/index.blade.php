@@ -19,14 +19,15 @@
             <div class="card-body">
               <h4 class="card-title">Products</h4>
               <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-gradient-primary mb-3 btn-fw ">ADD</button>
+                {{-- <button type="button" class="btn btn-gradient-primary mb-3 btn-fw ">ADD</button> --}}
+                <a href="{{ route('inventories') }}/create" class="btn btn-gradient-primary mb-3 btn-fw">Tambah</a>
               </div>
               
               <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Title</th>
+                        <th>Code</th>
                         <th>product</th>
                         <th>Purchased In</th>
                         <th>Room</th>
@@ -35,7 +36,7 @@
                 @php
                 $i = 1;
             @endphp
-            
+            {{-- @dd($inventories) --}}
             @unless (count($inventories) == 0)
             @foreach ($inventories as $inventory)
                 <tr>
@@ -47,7 +48,7 @@
                 </tr>
                 @endforeach
             @else
-            <p>no inventories found</p>
+            <h3>no inventories found</h3>
             @endunless
             </table>
             <div class="d-flex justify-content-end mt-3 ">

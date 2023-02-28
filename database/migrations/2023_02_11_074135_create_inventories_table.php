@@ -17,7 +17,7 @@ class CreateInventoriesTable extends Migration
             $table->id();
             $table->string('code_inventory');
             $table->date('purchased_in')->nullable();
-            $table->foreignId('product_id');
+            $table->foreignId('product_id')->nullable();
             $table->foreignId('room_id')->nullable();
             $table->timestamps();
         });

@@ -14,42 +14,14 @@
         </nav>
       </div>
       <div class="row">
-        <div class="col-lg-4 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">{{ $title }} Form</h4>
-                <form class="forms-sample" action="{{ route('categories') }}" method="POST">
-                    @csrf
-                  <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name">
-                    @error('name')
-                    <div id="" class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                    @enderror
-                  </div>
-                  <div class="form-group">
-                    <label for="code">Code</label>
-                    <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="Code">
-                    @error('code')
-                    <div id="" class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                    @enderror
-                  </div>
-                  <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-                </form>
-              </div>
-            </div>
-          </div>
+        
         <div class="col-lg-8 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">{{ $title }} Table</h4>
               <div class="d-flex justify-content-end">
                 {{-- <button type="button" class="btn btn-gradient-primary mb-3 btn-fw ">ADD</button> --}}
-                <a href="{{ route('categories') }}/create" class="btn btn-gradient-primary mb-3 btn-fw">Tambah</a>
+                <a href="{{ route('rooms') }}/create" class="btn btn-gradient-primary mb-3 btn-fw">Tambah</a>
               </div>
               
               <table class="table table-bordered">
@@ -57,22 +29,24 @@
                   <tr>
                     <th> # </th>
                     <th>Name</th>
-                    <th>Code</th>
+                    <th>Department</th>
+                    <th>Floor</th>
                     
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $key => $category)
+                    @foreach ($rooms as $key => $room)
                     <tr>
-                        <td>{{ $categories->firstItem() + $key }}</td>
-                        <td> {{ $category->name }} </td>
-                        <td> {{ $category->code }} </td>
+                        <td>{{ $rooms->firstItem() + $key }}</td>
+                        <td> {{ $room->name }} </td>
+                        <td> {{ $room->department->name }} </td>
+                        <td> {{ $room->floor }} </td>
                       </tr> 
                     @endforeach
-                </tbody>
+                </tbody> 
             </table>
             <div class="d-flex justify-content-end mt-3 ">
-              {{ $categories->links() }}
+              {{ $rooms->links() }}
           </div>
             </div>
           </div>

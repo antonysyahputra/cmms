@@ -19,7 +19,6 @@
             <div class="card-body">
               <h4 class="card-title">Products</h4>
               <div class="d-flex justify-content-end">
-                {{-- <button type="button" class="btn btn-gradient-primary mb-3 btn-fw ">ADD</button> --}}
                 <a href="{{ route('products') }}/create" class="btn btn-gradient-primary mb-3 btn-fw">Tambah</a>
               </div>
               
@@ -39,7 +38,7 @@
                     @foreach ($products as $key => $product)
                     <tr>
                         <td> {{ $products->firstItem() + $key }}  </td>
-                        <td> {{ $product->code_product }} </td>
+                        <td> {{ $product->code }} </td>
                         <td> {{ $product->name }} </td>
                         {{-- <td>
                           <div class="progress">
@@ -56,7 +55,6 @@
             </table>
             <div class="d-flex justify-content-end mt-3 ">
                 {{ $products->links() }}
-                {{-- @dd($products) --}}
             </div>
             </div>
           </div>
