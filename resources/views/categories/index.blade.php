@@ -14,7 +14,35 @@
         </nav>
       </div>
       <div class="row">
-        
+        <div class="col-lg-4 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ $title }} Form</h4>
+                <form class="forms-sample" action="{{ route('categories') }}" method="POST">
+                    @csrf
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name">
+                    @error('name')
+                    <div id="" class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                  </div>
+                  <div class="form-group">
+                    <label for="code">Code</label>
+                    <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="Code">
+                    @error('code')
+                    <div id="" class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                  </div>
+                  <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
         <div class="col-lg-8 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
