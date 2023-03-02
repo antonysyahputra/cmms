@@ -13,11 +13,70 @@
           </ol>
         </nav>
       </div>
-      <div class="row">     
-        <div class="col-lg-12 grid-margin stretch-card">
+      <div class="row">
+        <div class="col-lg-4 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Products</h4>
+                <h4 class="card-title">{{ $title }} Form</h4>
+                <form class="forms-sample" action="{{ route('inventories') }}" method="POST">
+                    @csrf
+                  <div class="form-group">
+                    <label for="product_id">Product</label>
+                    {{-- <input type="text" class="form-control @error('name') is-invalid @enderror" name="product_id" id="product_id" placeholder="product_id"> --}}
+                    <select name="product_id" id="product_id" class="form-control form-control-sm">
+                      <option value=""></option>
+                      @foreach ($products as $product)
+                          <option class="product" value="{{ $product->id }}">{{ $product->code . ' = ' . $product->name }}</option>
+                      @endforeach
+                    </select>
+                    @error('product_id')
+                    <div id="" class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                  </div>
+                  <div class="form-group">
+                    <label for="room_id">Room</label>
+                    {{-- <input type="text" class="form-control @error('name') is-invalid @enderror" name="room_id" id="room_id" placeholder="room_id"> --}}
+                    <select name="room_id" id="room_id" class="form-control">
+                      <option value=""></option>
+                      @foreach ($rooms as $room)
+                          <option value="{{ $room->id }}">{{ $room->name }}</option>
+                      @endforeach
+                    </select>
+                    @error('room_id')
+                    <div id="" class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                  </div>
+                  <div class="form-group">
+                    <label for="purchased_in">Purchased In</label>
+                    <input type="date" class="form-control @error('name') is-invalid @enderror" name="purchased_in" id="purchased_in" placeholder="purchased_in">
+                    @error('purchased_in')
+                    <div id="" class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                  </div>
+                  <div class="form-group">
+                    <label for="code_inventory">Code inventory</label>
+                    <input type="text" class="form-control @error('code_inventory') is-invalid @enderror" name="code_inventory" id="code_inventory" placeholder="Code_inventory">
+                    @error('code_inventory')
+                    <div id="" class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                  </div>
+                  <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div> 
+        <div class="col-lg-8 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">{{ $title }}</h4>
               <div class="d-flex justify-content-end">
                 {{-- <button type="button" class="btn btn-gradient-primary mb-3 btn-fw ">ADD</button> --}}
                 <a href="{{ route('inventories') }}/create" class="btn btn-gradient-primary mb-3 btn-fw">Tambah</a>
@@ -57,8 +116,6 @@
             </div>
           </div>
         </div>
-          
-        
     </div>
     <!-- content-wrapper ends -->
     <!-- partial:{{  asset('bootstrap-5') }}/partials/_footer.html -->

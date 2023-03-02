@@ -12,7 +12,7 @@ class ProductController extends Controller
     {
         // dd(request()->category);
         return view('products/index', [
-            'title' => "Data Product",
+            'title' => "Product",
             'products' => Product::latest()->filter(request(['category']))->paginate(5),
             'categories' => Category::all()
        ]);

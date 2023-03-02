@@ -14,6 +14,55 @@
         </nav>
       </div>
       <div class="row">
+        <div class="col-lg-4 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ $title }} Form</h4>
+                <form class="forms-sample" action="{{ route('rooms') }}" method="POST">
+                  @csrf
+                  <div class="form-group"> 
+                    <label for="department_id">Department</label>
+                    <select class="form-control form-control-sm @error('department_id') is-invalid @enderror" name="department_id" id="department_id">
+                      <option value="#"></option>
+                      @foreach ($departments as $department)
+                      <option value="{{ $department->id }}">{{ $department->code }}</option>
+                      @endforeach
+                    </select>
+                    @error('department_id')
+                    <div id="" class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                  </div>
+                  <div class="form-group">
+                    <label for="floor">Floor</label>
+                    <select name="floor" id="floor" class="form-control form-control-sm @error('floor') is-invalid @enderror">
+                      <option value=""></option>
+                      @for ($i = 1; $i < 5; $i++)
+                      <option value="{{ $i }}">{{ $i }}</option>
+                      @endfor
+                    </select>
+                  </div>
+                  @error('floor')
+                  <div id="" class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control form-control-sm @error('name') is-invalid @enderror" name="name" id="room_name" placeholder="Name">
+                  @error('name')
+                  <div id="" class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                
+                <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+              </form>
+              </div>
+            </div>
+          </div>
         
         <div class="col-lg-8 grid-margin stretch-card">
           <div class="card">
@@ -51,7 +100,7 @@
             </div>
           </div>
         </div>  
-    </div>
+      </div>
     <!-- content-wrapper ends -->
     <!-- partial:{{  asset('bootstrap-5') }}/partials/_footer.html -->
     <footer class="footer">

@@ -21,11 +21,11 @@
                 <form class="forms-sample" action="{{ route('rooms') }}" method="POST">
                   @csrf
                   <div class="form-group"> 
-                    <label for="department_id">department</label>
-                    <select class="form-control" name="department_id" id="department_id">
+                    <label for="department_id">Department</label>
+                    <select class="form-control form-control-sm @error('department_id') is-invalid @enderror" name="department_id" id="department_id">
                       <option value="#"></option>
                       @foreach ($departments as $department)
-                      <option value="{{ $department->id }}">{{ $department->code }} - {{ $department->name }}</option>
+                      <option value="{{ $department->id }}">{{ $department->code }}</option>
                       @endforeach
                     </select>
                     @error('department_id')
@@ -35,17 +35,22 @@
                     @enderror
                   </div>
                   <div class="form-group">
-                    <label for="floor">floor</label>
-                    <select name="floor" id="floor" class="form-control">
+                    <label for="floor">Floor</label>
+                    <select name="floor" id="floor" class="form-control form-control-sm @error('floor') is-invalid @enderror">
                       <option value=""></option>
                       @for ($i = 1; $i < 5; $i++)
                       <option value="{{ $i }}">{{ $i }}</option>
                       @endfor
                     </select>
                   </div>
+                  @error('floor')
+                  <div id="" class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name">
+                  <input type="text" class="form-control form-control-sm @error('name') is-invalid @enderror" name="name" id="room_name" placeholder="Name">
                   @error('name')
                   <div id="" class="invalid-feedback">
                     {{ $message }}

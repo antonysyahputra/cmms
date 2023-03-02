@@ -50,6 +50,13 @@ Route::get('/rooms', [RoomController::class, 'index'])->name('rooms');
 Route::get('/rooms/create', [RoomController::class, 'create']);
 Route::post('/rooms', [RoomController::class, 'store']);
 
+// Documentation
+Route::get('/documentation', function () {
+    return view('documentation', [
+        'title' => 'Documentation',
+    ]);
+})->name('documentation');
+
 
 
 

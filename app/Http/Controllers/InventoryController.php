@@ -14,7 +14,7 @@ class InventoryController extends Controller
     public function index()
     {
         return view('inventories/index', [
-            'title' => 'Data inventories',
+            'title' => 'Inventories',
             'inventories' => Inventory::latest()->paginate(5),
             'departments' => Department::all(),
             'floors' => Floor::all(),
@@ -34,7 +34,7 @@ class InventoryController extends Controller
     }
 
     public function store(Request $request) {
-        dd(request('product_id'));
+       
         $formInventory = $request->validate([
             'product_id' => 'required',
             'room_id' => 'required',

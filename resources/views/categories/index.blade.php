@@ -20,19 +20,20 @@
                 <h4 class="card-title">{{ $title }} Form</h4>
                 <form class="forms-sample" action="{{ route('categories') }}" method="POST">
                     @csrf
+                  
                   <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name">
-                    @error('name')
+                    <label for="code">Code</label>
+                    <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="Code">
+                    @error('code')
                     <div id="" class="invalid-feedback">
                       {{ $message }}
                     </div>
                     @enderror
                   </div>
                   <div class="form-group">
-                    <label for="code">Code</label>
-                    <input type="text" class="form-control @error('code') is-invalid @enderror" name="code" id="code" placeholder="Code">
-                    @error('code')
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Name">
+                    @error('name')
                     <div id="" class="invalid-feedback">
                       {{ $message }}
                     </div>
@@ -56,8 +57,8 @@
                 <thead>
                   <tr>
                     <th> # </th>
-                    <th>Name</th>
                     <th>Code</th>
+                    <th>Name</th>
                     
                   </tr>
                 </thead>
@@ -65,8 +66,8 @@
                     @foreach ($categories as $key => $category)
                     <tr>
                         <td>{{ $categories->firstItem() + $key }}</td>
-                        <td> {{ $category->name }} </td>
                         <td> {{ $category->code }} </td>
+                        <td> {{ $category->name }} </td>
                       </tr> 
                     @endforeach
                 </tbody>

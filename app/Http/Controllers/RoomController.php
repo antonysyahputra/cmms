@@ -12,7 +12,8 @@ class RoomController extends Controller
     {
         return view('rooms/index', [
             'title' => 'Room',
-            'rooms' => Room::latest()->paginate(5),
+            'rooms' => Room::latest()->paginate(10),
+            'departments' => Department::all(),
         ]);
     }
 
@@ -29,7 +30,7 @@ class RoomController extends Controller
         $formRooms = $request->validate([
             'department_id' => 'required',
             'floor' => 'required',
-            'name' => 'required',
+            'name' => 'required|unique:rooms',
         ]);
 
         Room::create($formRooms);

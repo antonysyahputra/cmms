@@ -11,7 +11,7 @@ class CategoryController extends Controller
     {
         return view('categories/index', [
             "title" => "Categories",
-            "categories" => Category::latest()->paginate(3)
+            "categories" => Category::latest()->paginate(10)
         ]);
     }
 
@@ -26,7 +26,7 @@ class CategoryController extends Controller
     {
         $formCategories = $request->validate([
             'name' => 'required',
-            'code' => 'required'
+            'code' => 'required|unique:categories'
         ]);
         // dd($formFields);
         Category::create($formCategories);
