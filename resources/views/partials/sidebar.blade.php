@@ -15,7 +15,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{  asset('bootstrap-5') }}/index.html">
+        <a class="nav-link" href="{{  asset('dashboard') }}">
           <span class="menu-title">Dashboard</span>
           <i class="mdi mdi-home menu-icon"></i>
         </a>

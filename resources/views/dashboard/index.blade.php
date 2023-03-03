@@ -14,18 +14,14 @@
         </nav>
       </div>
       <div class="row">
-        
         <div class="col-lg-12 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">{{ $title }}</h4>
-                
-              
-              
-            
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ $title }}</h4>
+                    
+                </div>
             </div>
-          </div>
-        </div>  
+        </div> 
     </div>
     <!-- content-wrapper ends -->
     <!-- partial:{{  asset('bootstrap-5') }}/partials/_footer.html -->
@@ -39,5 +35,8 @@
   </div>
 </div>
 @endsection
+    
+
+
     
 

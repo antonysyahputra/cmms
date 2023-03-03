@@ -26,6 +26,12 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+Route::get('/dashboard', function () {
+    return view('/dashboard/index', [
+        'title' => 'Dashboard'
+    ]);
+});
+
 // Inventory
 Route::get('/inventories', [InventoryController::class, 'index'])->name('inventories');
 Route::get('/inventories/create', [InventoryController::class, 'create']);

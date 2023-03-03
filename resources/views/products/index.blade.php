@@ -14,7 +14,7 @@
         </nav>
       </div>
       <div class="row">
-        <div class="col-lg-4 grid-margin stretch-card">
+        <div class="col-lg-3 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
                 <h4 class="card-title">{{ $title }} Form</h4>
@@ -79,7 +79,7 @@
               </div>
             </div>
           </div>    
-        <div class="col-lg-8 grid-margin stretch-card">
+        <div class="col-lg-9 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Products</h4>
@@ -87,6 +87,7 @@
                 <a href="{{ route('products') }}/create" class="btn btn-gradient-primary mb-3 btn-fw">Tambah</a>
               </div>
               
+              @unless (count($categories) == 0)
               <table class="table table-bordered">
                 <thead>
                   <tr>
@@ -100,6 +101,8 @@
                   </tr>
                 </thead>
                 <tbody>
+                      
+                  
                     @foreach ($products as $key => $product)
                     <tr>
                         <td> {{ $products->firstItem() + $key }}  </td>
@@ -114,10 +117,15 @@
                         <td> {{ $product->specification }} </td>
                         <td> {{ $product->category->name }} </td>
                         
-                      </tr> 
+                    </tr> 
                     @endforeach
+                  
                 </tbody>
             </table>
+              @else
+                <h3 class="text-danger">Data category not created yet..!!</h3>
+                <p class="text-danger">Please create category...</p>
+              @endunless
             <div class="d-flex justify-content-end mt-3 ">
                 {{ $products->links() }}
             </div>
