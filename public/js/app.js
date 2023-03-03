@@ -11,13 +11,12 @@ $("#room_name").on("click", function () {
 
 // Inventory
 
-// console.log($("#product_id"));
 $("#code_inventory").on("click", function () {
     let product = $("#product_id option:selected").text();
     let room = $("#room_id option:selected").text();
     let purchased_in = $("#purchased_in").val().slice(2, 4);
     let result = product.slice(0, 4);
-    $(this).val(result + "-" + purchased_in + "-" + room);
+    $(this).val(result + "-" + purchased_in + "-" + room + "-");
 });
 
 let str = "GeeksforGeeks";

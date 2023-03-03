@@ -45,6 +45,11 @@ Route::get('/categories', [CategoryController::class, 'index'])->name('categorie
 Route::get('/categories/create', [CategoryController::class, 'create']);
 Route::post('/categories', [CategoryController::class, 'store']);
 
+// Department
+Route::get('/departments', function () {
+    return view('departments/index');
+})->name('departments');
+
 // Room
 Route::get('/rooms', [RoomController::class, 'index'])->name('rooms');
 Route::get('/rooms/create', [RoomController::class, 'create']);

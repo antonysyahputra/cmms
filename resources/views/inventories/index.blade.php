@@ -8,12 +8,13 @@
         <h3 class="page-title"> {{ $title }} </h3>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Tables</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Products tables</li>
+            <li class="breadcrumb-item"><a href="#">{{ $title }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ $title }} tables</li>
           </ol>
         </nav>
       </div>
       <div class="row">
+        
         <div class="col-lg-4 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
@@ -72,17 +73,17 @@
                 </form>
               </div>
             </div>
-          </div> 
+        </div> 
         <div class="col-lg-8 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">{{ $title }}</h4>
               <div class="d-flex justify-content-end">
                 {{-- <button type="button" class="btn btn-gradient-primary mb-3 btn-fw ">ADD</button> --}}
-                <a href="{{ route('inventories') }}/create" class="btn btn-gradient-primary mb-3 btn-fw">Tambah</a>
+                <a href="{{ route('inventories') }}/create" class="btn btn-sm btn-outline-primary mb-3 btn-fw">Tambah</a>
               </div>
               
-              <table class="table table-bordered">
+              <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -90,6 +91,7 @@
                         <th>product</th>
                         <th>Purchased In</th>
                         <th>Room</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 @php
@@ -104,6 +106,18 @@
                     <td class="table-item">{{ $inventory->product->name }}</td>
                     <td class="table-item">{{ $inventory->purchased_in }}</td>
                     <td class="table-item">{{ $inventory->room->name }}</td>
+                    <td class="table-item">
+                      <div class="input-group-prepend">
+                        <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">View</a>
+                          <a class="dropdown-item" href="#">Edit</a>
+                          <a class="dropdown-item" href="#">Delete</a>
+                          <div role="separator" class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Other</a>
+                        </div>
+                      </div>
+                    </td>
                 </tr>
                 @endforeach
             @else
