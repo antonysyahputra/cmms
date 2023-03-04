@@ -82,7 +82,7 @@
                 {{-- <button type="button" class="btn btn-gradient-primary mb-3 btn-fw ">ADD</button> --}}
                 <a href="{{ route('inventories') }}/create" class="btn btn-sm btn-outline-primary mb-3 btn-fw">Tambah</a>
               </div>
-              
+              {{ $inventories->firstItem() }}
               <table class="table table-hover">
                 <thead>
                     <tr>
@@ -99,9 +99,9 @@
             @endphp
             {{-- @dd($inventories) --}}
             @unless (count($inventories) == 0)
-            @foreach ($inventories as $inventory)
+            @foreach ($inventories as $key => $inventory)
                 <tr>
-                    <td class="table-item">{{ $i++ }}</td>
+                    <td class="table-item">{{ $inventories->firstItem() + $key }}</td>
                     <td class="table-item">{{ $inventory->code_inventory }}</td>
                     <td class="table-item">{{ $inventory->product->name }}</td>
                     <td class="table-item">{{ $inventory->purchased_in }}</td>
@@ -124,8 +124,11 @@
             <h3>no inventories found</h3>
             @endunless
             </table>
-            <div class="d-flex justify-content-end mt-3 ">
-                {{-- {{ $products->links() }} --}}
+            <div class="d-flex justify-content mt-3">
+              <p class="text-info">Showing {{ $inventories->firstItem() }} - {{ $inventories->lastItem() }} of {{ $inventories->total() }}</p>
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+                {{ $inventories->links() }}
             </div>
             </div>
           </div>
