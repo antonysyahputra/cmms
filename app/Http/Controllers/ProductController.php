@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 
 use App\Models\Category;
+use App\Models\Inventory;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -44,5 +45,12 @@ class ProductController extends Controller
         Product::create($formProducts);
 
         return redirect('/products');
+    }
+
+    public function getproduct(Request $request)
+    {
+
+        $getLastInventory = Inventory::where('product_id', $request->getproduct_id)->latest()->first();
+        dd($getLastInventory->code_inventory);
     }
 }

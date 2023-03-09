@@ -19,6 +19,7 @@
           <div class="card">
             <div class="card-body">
                 <h4 class="card-title">{{ $title }} Form</h4>
+                
                 <form class="forms-sample" action="{{ route('inventories') }}" method="POST">
                     @csrf
                   <div class="form-group">
@@ -60,15 +61,15 @@
                     </div>
                     @enderror
                   </div>
-                  <div class="form-group">
-                    <label for="code_inventory">Code inventory</label>
-                    <input type="text" class="form-control @error('code_inventory') is-invalid @enderror" name="code_inventory" id="code_inventory" placeholder="Code_inventory">
-                    @error('code_inventory')
+                  {{-- <div class="form-group">
+                    <label for="serial_number">Serial Number</label>
+                    <input type="text" class="form-control @error('serial_number') is-invalid @enderror" name="serial_number" id="serial_number" placeholder="serial_number">
+                    @error('serial_number')
                     <div id="" class="invalid-feedback">
                       {{ $message }}
                     </div>
                     @enderror
-                  </div>
+                  </div> --}}
                   <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
                 </form>
               </div>
@@ -110,11 +111,9 @@
                       <div class="input-group-prepend">
                         <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
                         <div class="dropdown-menu">
-                          <a class="dropdown-item" href="#">View</a>
+                          <a class="dropdown-item" href="/inventories/{{ $inventory->id }}">View</a>
                           <a class="dropdown-item" href="#">Edit</a>
                           <a class="dropdown-item" href="#">Delete</a>
-                          <div role="separator" class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Other</a>
                         </div>
                       </div>
                     </td>

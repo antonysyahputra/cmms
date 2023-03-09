@@ -36,14 +36,22 @@ Route::get('/dashboard', function () {
 Route::get('/inventories', [InventoryController::class, 'index'])->name('inventories');
 Route::get('/inventories/create', [InventoryController::class, 'create']);
 Route::post('/inventories', [InventoryController::class, 'store']);
-Route::get('/inventories/{id}', function ($id) {
-    return Inventory::find($id);
-});
+Route::get('/inventories/{id}', [InventoryController::class, 'show']);
+Route::post('/getlastinventory}', [InventoryController::class, 'getlastinventory'])->name('getlastinventory');
+
+// Maintenance
+Route::get('/maintenances', function () {
+    return view('maintenances/index', [
+        'title' => 'Maintenance'
+    ]);
+})->name('maintenances');
 
 // Product
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/create', [ProductController::class, 'create']);
 Route::post('/products', [ProductController::class, 'store']);
+// getproduct
+Route::post('/getproduct', [ProductController::class, 'getproduct'])->name('getproduct');
 
 // Category
 
